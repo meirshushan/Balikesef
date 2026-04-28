@@ -4,10 +4,8 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"/>
 <meta name="theme-color" content="#07090d"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <title>BaliKesef</title>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;800&family=Bebas+Neue&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{background:#07090d;font-family:'Heebo',Arial,sans-serif;direction:rtl;color:#e8e8e8;max-width:500px;margin:0 auto;min-height:100vh}
@@ -18,24 +16,374 @@ body{background:#07090d;font-family:'Heebo',Arial,sans-serif;direction:rtl;color
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 @keyframes slideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
 #setup{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:24px}
-.setup-card{background:#0f1622;border:2px solid #d4af37;border-radius:20px;padding:28px;width:100%;max-width:420px;text-align:center}
-.setup-logo{font-size:52px;margin-bottom:10px}
-.setup-title{font-family:'Bebas Neue',sans-serif;font-size:36px;color:#d4af37;letter-spacing:4px;margin-bottom:6px}
-.setup-sub{color:#6b7280;font-size:13px;line-height:1.7;margin-bottom:22px}
-.setup-step{background:#0a0d14;border-radius:12px;padding:14px;margin-bottom:12px;text-align:right}
-.step-num{color:#d4af37;font-weight:800;font-size:12px;margin-bottom:5px}
-.step-txt{color:#9ca3af;font-size:12px;line-height:1.7}
-.key-input{width:100%;background:#0a0d14;border:1.5px solid #d4af37;color:#fff;padding:13px 16px;border-radius:12px;font-size:14px;font-family:'Heebo',Arial,sans-serif;outline:none;margin-bottom:12px;direction:ltr;text-align:center}
-.key-input::placeholder{color:#4a5568;direction:rtl}
-.go-btn{width:100%;background:#d4af37;border:none;border-radius:14px;padding:15px;font-size:16px;font-weight:800;color:#000;cursor:pointer;font-family:'Heebo',Arial,sans-serif}
-.go-btn:disabled{opacity:.5;cursor:not-allowed}
-#app{display:none;flex-direction:column;min-height:100vh}
+.sc{background:#0f1622;border:2px solid #d4af37;border-radius:20px;padding:28px;width:100%;text-align:center}
+.sl{font-size:50px;margin-bottom:8px}
+.st{font-family:'Bebas Neue',sans-serif;font-size:34px;color:#d4af37;letter-spacing:4px;margin-bottom:6px}
+.ss{color:#6b7280;font-size:13px;line-height:1.7;margin-bottom:20px}
+.sp{background:#0a0d14;border-radius:12px;padding:13px;margin-bottom:12px;text-align:right}
+.sn{color:#d4af37;font-weight:800;font-size:12px;margin-bottom:4px}
+.sx{color:#9ca3af;font-size:12px;line-height:1.7}
+.ki{width:100%;background:#0a0d14;border:1.5px solid #d4af37;color:#fff;padding:13px;border-radius:12px;font-size:14px;font-family:'Heebo',Arial,sans-serif;outline:none;margin-bottom:12px;direction:ltr;text-align:center}
+.ki::placeholder{color:#4a5568}
+.gb{width:100%;background:#d4af37;border:none;border-radius:14px;padding:14px;font-size:16px;font-weight:800;color:#000;cursor:pointer;font-family:'Heebo',Arial,sans-serif}
+.gb:disabled{opacity:.5}
 header{background:linear-gradient(180deg,#0d1117,#0a0f1a);border-bottom:1px solid #d4af3740;padding:11px 15px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
-.logo{font-family:'Bebas Neue',sans-serif;font-size:26px;color:#d4af37;letter-spacing:4px;line-height:1}
-.logo-sub{font-size:9px;color:#5a6070;letter-spacing:2px;margin-top:2px}
-.hdr-right{display:flex;gap:8px;align-items:center}
-.live-badge{background:#ff1744;color:#fff;font-size:10px;font-weight:800;padding:4px 10px;border-radius:4px;letter-spacing:1px;animation:pulse 2s infinite}
-.live-count{background:#ff174420;color:#ff1744;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;border:1px solid #ff174440;display:none}
-.refresh-btn{background:#111827;border:1px solid #1e2940;color:#d4af37;padding:7px 12px;border-radius:10px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:5px;font-family:'Heebo',Arial,sans-serif}
-.refresh-btn:disabled{opacity:.5}
-.spin{anima
+.logo{font-family:'Bebas Neue',sans-serif;font-size:25px;color:#d4af37;letter-spacing:4px;line-height:1}
+.lsub{font-size:9px;color:#5a6070;letter-spacing:2px;margin-top:1px}
+.hdr-r{display:flex;gap:7px;align-items:center}
+.lb{background:#ff1744;color:#fff;font-size:10px;font-weight:800;padding:4px 9px;border-radius:4px;animation:pulse 2s infinite}
+.lc{background:#ff174420;color:#ff1744;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;border:1px solid #ff174440;display:none}
+.rb{background:#111827;border:1px solid #1e2940;color:#d4af37;padding:6px 11px;border-radius:10px;font-size:12px;cursor:pointer;font-family:'Heebo',Arial,sans-serif}
+.rb:disabled{opacity:.5}
+.spin{animation:spin 0.8s linear infinite;display:inline-block}
+.tabs{display:flex;background:#0a0d14;border-bottom:1px solid #151c28;position:sticky;top:53px;z-index:19}
+.tab{flex:1;background:none;border:none;border-bottom:2px solid transparent;color:#4a5568;padding:9px 4px 7px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:19px;font-family:'Heebo',Arial,sans-serif}
+.tab.active{border-bottom:2px solid #d4af37;color:#d4af37}
+.tlb{font-size:10px}
+.page{padding:11px 11px 85px;display:none}
+.page.active{display:block}
+.fr{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;padding-bottom:2px}
+.fr::-webkit-scrollbar{height:0}
+.fb{background:#111827;border:1px solid #1e2940;color:#6b7280;padding:5px 11px;border-radius:20px;font-size:11px;cursor:pointer;white-space:nowrap;font-family:'Heebo',Arial,sans-serif}
+.fb.active{background:#d4af37;border-color:#d4af37;color:#000;font-weight:700}
+.fb.lv.active{background:#ff1744;border-color:#ff1744;color:#fff}
+.card{background:linear-gradient(145deg,#0f1622,#0b1018);border:1px solid #1a2535;border-radius:14px;padding:12px;margin-bottom:9px;cursor:pointer;animation:fadeIn 0.3s ease;position:relative}
+.card.live{border-color:#ff174450}
+.ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.lt{font-size:11px;color:#d4af37;font-weight:700}
+.ct{font-size:11px;font-weight:700;color:#00e676}
+.ct.lv{color:#ff1744}
+.ct.dn{color:#6b7280}
+.tr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.tn{font-size:13px;font-weight:700;color:#f0f0f0;flex:1;line-height:1.3}
+.tn.aw{text-align:left}
+.vb{background:#1a2535;color:#d4af3780;font-size:11px;font-weight:800;padding:4px 8px;border-radius:6px;margin:0 4px}
+.sb{background:#1a2535;color:#00e676;font-size:17px;font-weight:800;padding:4px 9px;border-radius:6px;margin:0 4px;letter-spacing:2px;min-width:56px;text-align:center}
+.or{display:flex;gap:4px;margin-bottom:8px}
+.ob{flex:1;background:#0d1520;border:1px solid #1e2f42;border-radius:8px;padding:6px 2px;text-align:center}
+.ol{font-size:10px;color:#4a6080;margin-bottom:2px}
+.ov{font-size:15px;font-weight:800;color:#00e676}
+.ah{color:#d4af3770;font-size:10px;text-align:center;padding-top:6px;border-top:1px solid #1a2535}
+.ld{position:absolute;top:9px;left:11px;width:6px;height:6px;border-radius:50%;background:#ff1744;animation:pulse 1s infinite}
+.spb{text-align:center;padding:36px 0;color:#d4af37;display:flex;flex-direction:column;align-items:center;gap:10px}
+.spi{font-size:38px}
+.spm{font-weight:700;font-size:14px}
+.sps{font-size:11px;color:#5a6070}
+.eb{background:#1a0005;border:1px solid #ff174440;border-radius:12px;padding:12px;color:#ff6b6b;font-size:13px;margin-bottom:11px;line-height:1.7}
+.rtb{background:none;border:1px solid #ff174440;color:#ff6b6b;padding:5px 12px;border-radius:8px;font-size:12px;cursor:pointer;margin-top:7px;font-family:'Heebo',Arial,sans-serif}
+.emp{text-align:center;padding:36px 0;color:#4a5568;font-size:14px;line-height:2}
+#mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:100;align-items:flex-end}
+#mo.open{display:flex}
+#mb{background:#0f1622;border:1px solid #d4af3750;border-radius:20px 20px 0 0;padding:18px;width:100%;max-height:82vh;overflow-y:auto;animation:slideUp 0.3s ease}
+.mh{color:#d4af37;font-weight:800;font-size:13px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #1a2535;display:flex;justify-content:space-between;align-items:center}
+.xb{background:#1a2535;border:none;color:#aaa;width:27px;height:27px;border-radius:50%;cursor:pointer;font-size:12px}
+.mt{font-size:13px;line-height:2;color:#ccc;white-space:pre-wrap}
+.bc{background:linear-gradient(135deg,#1a1100,#231800);border:2px solid #d4af37;border-radius:16px;padding:18px;text-align:center;margin-bottom:14px;animation:glow 3s infinite}
+.ba{font-family:'Bebas Neue',sans-serif;font-size:42px;color:#fff;letter-spacing:2px}
+.bi{background:#0d1117;border:1px solid #d4af37;color:#fff;padding:8px 12px;border-radius:10px;font-size:16px;width:145px;text-align:center;font-family:'Heebo',Arial,sans-serif;outline:none;margin-top:8px}
+.kc,.rc{background:#0f1622;border:1px solid #1a2535;border-radius:14px;padding:14px;margin-bottom:12px}
+.ct2{color:#d4af37;font-weight:700;font-size:13px;margin-bottom:10px}
+.ki2{display:flex;gap:6px;margin-bottom:10px}
+.kin{flex:1;background:#0a0d14;border:1px solid #1e2940;color:#fff;padding:8px;border-radius:8px;font-size:14px;text-align:center;font-family:'Heebo',Arial,sans-serif;outline:none}
+.kr{border-radius:10px;padding:10px;text-align:center;font-size:15px;font-weight:800}
+.kr.good{background:#001a0a;border:1px solid #00e676;color:#00e676}
+.kr.bad{background:#1a0005;border:1px solid #ff1744;color:#ff1744}
+.ke{color:#4a6080;text-align:center;font-size:13px}
+.rl{font-size:13px;color:#8a9ab0;padding:6px 0;border-bottom:1px solid #141e2a;display:flex;gap:7px}
+#cp{display:none;flex-direction:column;height:calc(100vh - 144px);padding:11px 11px 0}
+#cp.active{display:flex}
+.cm{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-bottom:8px}
+.mu{align-self:flex-start;background:#1a2535;border:1px solid #253545;border-radius:4px 14px 14px 14px;padding:8px 12px;max-width:82%;font-size:14px;line-height:1.7;animation:fadeIn 0.2s}
+.ma{align-self:flex-end;max-width:86%;animation:fadeIn 0.2s}
+.ml{color:#d4af37;font-size:10px;font-weight:700;margin-bottom:3px;text-align:left}
+.mb2{background:#111827;border:1px solid #1e2f42;border-radius:14px 4px 14px 14px;padding:8px 12px;font-size:14px;line-height:1.8;color:#ccc;white-space:pre-wrap}
+.cir{display:flex;gap:6px;padding:8px 0 11px;border-top:1px solid #151c28}
+.ci{flex:1;background:#111827;border:1px solid #1e2940;color:#fff;padding:10px 12px;border-radius:12px;font-size:14px;outline:none;font-family:'Heebo',Arial,sans-serif}
+.csb{background:#d4af37;border:none;border-radius:12px;padding:0 14px;font-size:19px;cursor:pointer}
+.csb:disabled{opacity:.5}
+.ckb{background:none;border:1px solid #374151;color:#6b7280;padding:4px 11px;border-radius:8px;font-size:11px;cursor:pointer;font-family:'Heebo',Arial,sans-serif;margin-top:9px}
+</style>
+</head>
+<body>
+
+<div id="setup">
+  <div class="sc">
+    <div class="sl">💰</div>
+    <div class="st">BALIKESEF</div>
+    <div class="ss">קוטות חיות מ-ESPN • ניתוח AI מקצועי</div>
+    <div class="sp">
+      <div class="sn">איפה מוצאים מפתח Anthropic?</div>
+      <div class="sx">console.anthropic.com → API Keys → Create Key<br/>מתחיל ב-<b style="color:#d4af37">sk-ant-...</b></div>
+    </div>
+    <input class="ki" id="ki" type="password" placeholder="הדבק כאן את ה-API Key"/>
+    <button class="gb" id="gb" onclick="start()" disabled>🚀 התחבר וטען משחקים</button>
+    <div style="color:#374151;font-size:11px;margin-top:9px">נשמר רק בדפדפן שלך</div>
+  </div>
+</div>
+
+<div id="app" style="display:none">
+  <header>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span style="font-size:23px">💰</span>
+      <div><div class="logo">BALIKESEF</div><div class="lsub">ESPN LIVE • AI ODDS</div></div>
+    </div>
+    <div class="hdr-r">
+      <span class="lc" id="lc"></span>
+      <button class="rb" id="rb" onclick="loadAll()"><span id="ri">🔄</span></button>
+      <div class="lb">● LIVE</div>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" id="t-m" onclick="tab('m')"><span>🎯</span><span class="tlb">משחקים</span></button>
+    <button class="tab" id="t-b" onclick="tab('b')"><span>💼</span><span class="tlb">בנק</span></button>
+    <button class="tab" id="t-c" onclick="tab('c')"><span>🤖</span><span class="tlb">יועץ</span></button>
+  </div>
+
+  <div class="page active" id="p-m">
+    <div class="spb" id="spb" style="display:none"><span class="spi spin">⚡</span><div class="spm" id="spm"></div><div class="sps">שולף נתונים מ-ESPN...</div></div>
+    <div class="eb" id="er" style="display:none"></div>
+    <div class="fr" id="fr" style="display:none"></div>
+    <div id="ml"></div>
+    <div style="text-align:center"><button class="ckb" onclick="chKey()">🔑 החלף מפתח</button></div>
+  </div>
+
+  <div class="page" id="p-b">
+    <div class="bc">
+      <div style="color:#d4af3790;font-size:12px;letter-spacing:2px;margin-bottom:7px;font-weight:700">💼 בנק ההימורים שלי</div>
+      <div class="ba" id="ba">₪1,000</div>
+      <div style="color:#5a6070;font-size:11px;margin-top:3px">יתרה נוכחית</div>
+      <input class="bi" type="number" id="bi" value="1000" oninput="updBank()"/>
+    </div>
+    <div class="kc">
+      <div class="ct2">📐 מחשבון קלי</div>
+      <div class="ki2">
+        <input class="kin" type="number" placeholder="קוטה (2.1)" id="ko" oninput="calcK()"/>
+        <input class="kin" type="number" placeholder="סיכוי % (60)" id="kp" oninput="calcK()"/>
+      </div>
+      <div id="kr" class="ke">הזן קוטה ואחוז סיכוי</div>
+    </div>
+    <div class="rc">
+      <div class="ct2">🛡️ כללי ברזל</div>
+      <div class="rl"><span>✅</span><span>לא יותר מ-5% מהבנק על הימור יחיד</span></div>
+      <div class="rl"><span>✅</span><span>stop-loss יומי: 20% הפסד = עצור</span></div>
+      <div class="rl"><span>🔴</span><span>3 הפסדים ברצף? המתן למחר</span></div>
+      <div class="rl"><span>💡</span><span>נתונים בלבד — לא רגשות</span></div>
+      <div class="rl"><span>📈</span><span>הגדל רק אחרי x1.5 מהבנק</span></div>
+    </div>
+  </div>
+
+  <div id="cp">
+    <div class="cm" id="cm">
+      <div class="ma"><div class="ml">🤖 BALIKESEF AI</div><div class="mb2">שלום! יועץ BaliKesef כאן 🎯
+שאל אותי על כל משחק, קוטה, אסטרטגיה, או ניהול בנק!</div></div>
+    </div>
+    <div class="cir">
+      <input class="ci" id="ci" type="text" placeholder="שאל על משחק, קוטה..." dir="rtl" onkeydown="if(event.key==='Enter')chat()"/>
+      <button class="csb" id="csb" onclick="chat()">📤</button>
+    </div>
+  </div>
+</div>
+
+<div id="mo" onclick="closeMo(event)">
+  <div id="mb">
+    <div class="mh"><span id="mtit"></span><button class="xb" onclick="closeMo()">✕</button></div>
+    <div class="mt" id="mbody">טוען...</div>
+  </div>
+</div>
+
+<script>
+let KEY='', matches=[], analyses={}, bank=1000, chatHist=[], curMo=null;
+
+const LEAGUES=[
+  {url:'https://site.api.espn.com/apis/site/v2/sports/football/eng.1/scoreboard',label:'⚽ פרמייר ליג',sport:'football'},
+  {url:'https://site.api.espn.com/apis/site/v2/sports/football/esp.1/scoreboard',label:'⚽ לה ליגה',sport:'football'},
+  {url:'https://site.api.espn.com/apis/site/v2/sports/football/ger.1/scoreboard',label:'⚽ בונדסליגה',sport:'football'},
+  {url:'https://site.api.espn.com/apis/site/v2/sports/football/ita.1/scoreboard',label:'⚽ סריה A',sport:'football'},
+  {url:'https://site.api.espn.com/apis/site/v2/sports/football/fra.1/scoreboard',label:'⚽ ליג 1',sport:'football'},
+  {url:'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard',label:'🏀 NBA',sport:'basketball'},
+];
+
+async function espn(lg){
+  const r=await fetch(lg.url); if(!r.ok)return[];
+  const d=await r.json();
+  return(d.events||[]).map(e=>{
+    const c=e.competitions?.[0];
+    const h=c?.competitors?.find(x=>x.homeAway==='home');
+    const a=c?.competitors?.find(x=>x.homeAway==='away');
+    if(!h||!a)return null;
+    const sn=c?.status?.type?.name||'';
+    return{id:e.id,home:h.team?.displayName||'',away:a.team?.displayName||'',
+      homeScore:h.score??null,awayScore:a.score??null,
+      league:lg.label,sport:lg.sport,date:c?.date||'',
+      isLive:sn==='STATUS_IN_PROGRESS',isDone:c?.status?.type?.completed===true,
+      homeOdd:null,awayOdd:null,drawOdd:null};
+  }).filter(Boolean);
+}
+
+async function claude(sys,usr){
+  const r=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{'Content-Type':'application/json','x-api-key':KEY,'anthropic-version':'2023-06-01'},
+    body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1200,system:sys,messages:[{role:'user',content:usr}]})
+  });
+  const j=await r.json();
+  if(j.error)throw new Error(j.error.message);
+  return j.content?.map(b=>b.text||'').join('')||'';
+}
+
+function parseOdds(t){
+  try{const s=t.indexOf('['),e=t.lastIndexOf(']');if(s<0||e<0)return{};
+  const a=JSON.parse(t.slice(s,e+1));const m={};a.forEach(o=>{m[String(o.id)]=o;});return m;}catch{return{};}
+}
+
+function fmt(iso){if(!iso)return'';try{return new Date(iso).toLocaleString('he-IL',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});}catch{return iso;}}
+
+// Setup
+document.getElementById('ki').addEventListener('input',function(){document.getElementById('gb').disabled=this.value.trim().length<10;});
+
+function start(){
+  const k=document.getElementById('ki').value.trim();if(!k)return;
+  KEY=k;localStorage.setItem('bk',k);
+  document.getElementById('setup').style.display='none';
+  document.getElementById('app').style.display='block';
+  loadAll();
+}
+
+function chKey(){localStorage.removeItem('bk');location.reload();}
+
+window.addEventListener('load',()=>{
+  const s=localStorage.getItem('bk');
+  if(s){KEY=s;document.getElementById('setup').style.display='none';document.getElementById('app').style.display='block';loadAll();}
+});
+
+// Load
+let curF='all';
+async function loadAll(){
+  matches=[];analyses={};
+  setSpin(true,'📡 שולף משחקים מ-ESPN...');setErr('');setList([]);
+  document.getElementById('fr').style.display='none';
+  const ri=document.getElementById('ri');ri.classList.add('spin');
+  document.getElementById('rb').disabled=true;
+  try{
+    const res=await Promise.allSettled(LEAGUES.map(lg=>espn(lg)));
+    const all=[];res.forEach(r=>{if(r.status==='fulfilled')all.push(...r.value);});
+    if(all.length===0)throw new Error('ESPN לא מצא משחקים כרגע');
+    const up=all.filter(m=>!m.isDone).slice(0,18);
+    if(up.length>0){
+      setSpin(true,'🤖 Claude מחשב קוטות...');
+      try{
+        const list=up.map(m=>`id:${m.id} ${m.home} vs ${m.away} sport:${m.sport}`).join('\n');
+        const txt=await claude('Sports betting expert. Return ONLY a JSON array. Each: {"id":"...","homeOdd":X.XX,"awayOdd":X.XX,"drawOdd":X.XX}. Football has drawOdd, basketball does not. Odds 1.15-7.00.',`Odds for:\n${list}`);
+        const map=parseOdds(txt);
+        up.forEach(m=>{const o=map[String(m.id)];if(o){m.homeOdd=o.homeOdd;m.awayOdd=o.awayOdd;m.drawOdd=o.drawOdd||null;}});
+      }catch{}
+    }
+    all.sort((a,b)=>{if(a.isLive!==b.isLive)return a.isLive?-1:1;if(a.isDone!==b.isDone)return a.isDone?1:-1;return new Date(a.date)-new Date(b.date);});
+    matches=all;buildF();render();
+  }catch(e){setErr(e.message);}
+  setSpin(false);ri.classList.remove('spin');document.getElementById('rb').disabled=false;
+}
+
+function buildF(){
+  const lv=matches.filter(m=>m.isLive).length;
+  const sp=[...new Set(matches.map(m=>m.sport))];
+  const fr=document.getElementById('fr');fr.innerHTML='';
+  const add=(lbl,val,cls='')=>{
+    const b=document.createElement('button');
+    b.className='fb'+(curF===val?' active':'')+(cls?' '+cls:'');
+    b.textContent=lbl;b.onclick=()=>{curF=val;buildF();render();};fr.appendChild(b);
+  };
+  add(`🌐 הכל (${matches.length})`,'all');
+  if(lv>0)add(`🔴 חי (${lv})`,'live','lv');
+  sp.forEach(s=>{const c=matches.filter(m=>m.sport===s).length;add(`${s==='football'?'⚽ כדורגל':'🏀 כדורסל'} (${c})`,s);});
+  fr.style.display='flex';
+  const lc=document.getElementById('lc');
+  if(lv>0){lc.textContent=`🔴 ${lv}`;lc.style.display='block';}else lc.style.display='none';
+}
+
+function render(){
+  const shown=curF==='live'?matches.filter(m=>m.isLive):curF==='all'?matches:matches.filter(m=>m.sport===curF);
+  setList(shown);
+}
+
+function setList(list){
+  const el=document.getElementById('ml');
+  if(!list.length){el.innerHTML='<div class="emp">😴 אין משחקים כרגע<br/><span style="font-size:12px">נסה ליגה אחרת</span></div>';return;}
+  el.innerHTML=list.map(m=>{
+    const tc=m.isLive?'lv':m.isDone?'dn':'';
+    const tl=m.isLive?'🔴 חי':m.isDone?'✅ הסתיים':fmt(m.date);
+    const mid=(m.isLive||m.isDone)&&m.homeScore!=null?`<div class="sb">${m.homeScore}–${m.awayScore}</div>`:`<div class="vb">VS</div>`;
+    const odds=(!m.isDone&&m.homeOdd)?`<div class="or"><div class="ob"><div class="ol">1</div><div class="ov">${(+m.homeOdd).toFixed(2)}</div></div>${m.drawOdd?`<div class="ob"><div class="ol">X</div><div class="ov">${(+m.drawOdd).toFixed(2)}</div></div>`:''}<div class="ob"><div class="ol">2</div><div class="ov">${(+m.awayOdd).toFixed(2)}</div></div></div>`:'';
+    return`<div class="card${m.isLive?' live':''}" onclick="openM('${m.id}')">${m.isLive?'<div class="ld"></div>':''}<div class="ch"><span class="lt">${m.league}</span><span class="ct ${tc}">${tl}</span></div><div class="tr"><div class="tn">${m.home}</div>${mid}<div class="tn aw">${m.away}</div></div>${odds}<div class="ah">🤖 לחץ לניתוח AI ←</div></div>`;
+  }).join('');
+}
+
+// Modal
+async function openM(id){
+  const m=matches.find(x=>x.id===id);if(!m)return;
+  curMo=id;
+  document.getElementById('mtit').textContent=`${m.home} vs ${m.away}`;
+  document.getElementById('mbody').textContent=analyses[id]||'';
+  document.getElementById('mo').classList.add('open');
+  if(analyses[id])return;
+  document.getElementById('mbody').innerHTML='<div class="spb"><span class="spi spin">⚡</span><div class="spm">AI מנתח...</div><div class="sps">10–20 שניות</div></div>';
+  try{
+    const ol=m.isDone?`תוצאה: ${m.homeScore}–${m.awayScore}`:m.homeOdd?`קוטות: 1=${m.homeOdd}${m.drawOdd?` X=${m.drawOdd}`:''} 2=${m.awayOdd}`:'';
+    const txt=await claude('אתה מנתח הימורי ספורט של BaliKesef. נתח בעברית, קצר וחד.\n📊 מצב הקבוצות | ⚔️ מפגשים ישירים | ⭐ שחקני מפתח | 📈 ניתוח קוטות | ✅ המלצה | 🎯 ביטחון X/10',`${m.home} נגד ${m.away} — ${m.league}\n${fmt(m.date)}\n${ol}`);
+    analyses[id]=txt;if(curMo===id)document.getElementById('mbody').textContent=txt;
+  }catch(e){const er='⚠️ '+e.message;analyses[id]=er;if(curMo===id)document.getElementById('mbody').textContent=er;}
+}
+
+function closeMo(e){
+  if(e&&e.target!==document.getElementById('mo'))return;
+  document.getElementById('mo').classList.remove('open');curMo=null;
+}
+
+// Bank
+function updBank(){bank=parseFloat(document.getElementById('bi').value)||0;document.getElementById('ba').textContent='₪'+bank.toLocaleString();calcK();}
+function calcK(){
+  const o=parseFloat(document.getElementById('ko').value),p=parseFloat(document.getElementById('kp').value)/100;
+  const el=document.getElementById('kr');
+  if(!o||!p||o<=1||p<=0||p>=1){el.className='ke';el.textContent='הזן קוטה ואחוז סיכוי';return;}
+  const k=((o-1)*p-(1-p))/(o-1);
+  if(k<=0){el.className='kr bad';el.textContent='❌ אין ערך — לא כדאי';}
+  else{el.className='kr good';el.textContent=`✅ הימור מומלץ: ₪${Math.round(k*bank)}`;}
+}
+
+// Chat
+async function chat(){
+  const inp=document.getElementById('ci');const msg=inp.value.trim();if(!msg)return;
+  inp.value='';addMsg(msg,false);document.getElementById('csb').disabled=true;
+  addMsg('<span style="animation:pulse 1s infinite;display:inline-block">⚡ מנתח...</span>',true,'typ');
+  try{
+    const h=chatHist.slice(-6).map(m=>`${m.r}: ${m.t}`).join('\n');
+    const txt=await claude('יועץ הימורים BaliKesef. עברית, קצר, עוקצני. הסתברות בלבד. ניהול סיכונים.',`${h}\nמשתמש: ${msg}`);
+    rmTyp();addMsg(txt,true);chatHist.push({r:'משתמש',t:msg},{r:'יועץ',t:txt});
+  }catch(e){rmTyp();addMsg('⚠️ '+e.message,true);}
+  document.getElementById('csb').disabled=false;
+}
+
+function addMsg(t,ai,id=''){
+  const w=document.getElementById('cm');const d=document.createElement('div');
+  d.className=ai?'ma':'mu';if(id)d.id=id;
+  if(ai)d.innerHTML=`<div class="ml">🤖 BALIKESEF AI</div><div class="mb2">${t}</div>`;
+  else d.textContent=t;
+  w.appendChild(d);w.scrollTop=w.scrollHeight;
+}
+function rmTyp(){const t=document.getElementById('typ');if(t)t.remove();}
+
+// Tabs
+function tab(n){
+  ['m','b','c'].forEach(t=>{document.getElementById('t-'+t).classList.toggle('active',t===n);});
+  document.querySelectorAll('.page').forEach(p=>{p.classList.remove('active');p.style.display='none';});
+  const cp=document.getElementById('cp');
+  if(n==='c'){cp.style.display='flex';cp.classList.add('active');document.getElementById('cm').scrollTop=99999;}
+  else{cp.style.display='none';cp.classList.remove('active');const pg=document.getElementById('p-'+n);pg.style.display='block';pg.classList.add('active');}
+}
+
+function setSpin(s,m=''){document.getElementById('spb').style.display=s?'flex':'none';if(m)document.getElementById('spm').textContent=m;}
+function setErr(m){const e=document.getElementById('er');if(!m){e.style.display='none';return;}e.style.display='block';e.innerHTML=`⚠️ ${m}<br/><button class="rtb" onclick="loadAll()">🔄 נסה שוב</button>`;}
+</script>
+</body>
+</html>
